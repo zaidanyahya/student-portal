@@ -1,0 +1,153 @@
+/*
+* Utilities
+*/
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500;700&display=swap');
+
+
+// Colors
+$primary : #2F80ED;
+$secondary : #8C8CA1;
+$accent : #ECF1F4;
+
+
+$border-radius : 8px; 
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    padding: 5%;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+@mixin font($w: bold, $s:24px, $ls:-2%) {
+    font-family: Work Sans, monospace;
+    font-weight:$w; 
+    font-size:$s;
+    letter-spacing:$ls;
+}
+
+@mixin h1 {
+    @include font($s:64px); 
+}
+
+@mixin h2 {
+    @include font($s:40px);
+}
+
+@mixin h3 {
+    @include font();
+}
+
+@mixin h4 {
+    @include font($s:14px);
+}
+
+
+@mixin subtitle(){
+    @include font($w:medium, $s:24px, $ls:0);
+}
+
+@mixin border-default {
+    border: 3px solid #0E0E2C;
+    box-sizing: border-box;
+    border-radius: $border-radius;
+}
+
+// Button
+.btn {
+    padding: 10px;
+    margin: 2% 0;
+    border-radius: $border-radius;
+    background-color: $secondary;
+    text-align: center;
+    border: none;
+    @include h4();
+    color: white;
+    transition: .3s;
+    &:hover {
+        background-color: adjust-color($secondary, $lightness: -30%) ;
+    }
+}
+
+.btn-primary{
+    color: white;
+    background-color: $primary;
+    &:hover {
+        background-color: adjust-color($primary, $lightness: -30%) ;
+    }
+}
+
+// Login Page
+.login-bg-top {
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.logo {
+    width: 60%;
+    margin: 4em auto;
+    padding: 10px;
+    img {
+        width: 100%;
+    }
+}
+
+form {
+    margin: 4em 5%;
+    display: grid;
+    .form-item {
+        display: inline-block;
+        width: 100%;
+        justify-content: space-between;
+        label {
+            @include h4();
+        }
+        input{
+            margin: 4% auto;
+            width: 100%;
+            height: 50px;
+            @include border-default();
+        }
+    }
+    input[type="submit"]{
+        width: 100%;
+        
+        
+    }
+}
+
+.login-bg-bottom {
+    position: fixed;
+    z-index: -1;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    transform: rotate(180deg);
+}
+
+@media only screen and (min-width:600px){
+    .container {
+        display: grid;
+        height: 70vh;
+        place-content: center;
+    }
+    .logo {
+        max-width: 650px;
+    }
+
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
